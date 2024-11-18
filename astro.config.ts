@@ -22,7 +22,7 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  site: 'https://oemerdigital.github.io',
+  site: 'https://astro-homepage.netlify.app', 
   base: '/astro-homepage',
   output: 'static',
 

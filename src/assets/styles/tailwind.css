@@ -22,19 +22,40 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+    @apply inline-flex items-center justify-center rounded-lg border-2 font-medium text-center text-base leading-snug transition duration-200 py-3 px-6 md:px-8 cursor-pointer;
+    @apply shadow-sm hover:shadow-md active:shadow-inner transform hover:-translate-y-0.5 active:translate-y-0;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary;
   }
 
   .btn-primary {
-    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
+    @apply btn border-primary bg-primary text-white;
+    @apply hover:bg-primary-600 hover:border-primary-600;
+    @apply dark:bg-primary-500 dark:border-primary-500 dark:hover:bg-primary-400 dark:hover:border-primary-400;
   }
 
   .btn-secondary {
-    @apply btn;
+    @apply btn border-gray-300 bg-white text-gray-800;
+    @apply hover:bg-gray-50 hover:border-gray-400;
+    @apply dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:border-gray-500;
   }
 
   .btn-tertiary {
-    @apply btn border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
+    @apply btn border-transparent bg-transparent text-gray-600;
+    @apply hover:bg-gray-50 hover:text-gray-900;
+    @apply dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white;
+    @apply shadow-none;
+  }
+
+  .btn-sm {
+    @apply py-2 px-4 md:px-5 text-sm;
+  }
+
+  .btn-lg {
+    @apply py-4 px-8 md:px-10 text-lg;
+  }
+
+  .btn-icon {
+    @apply p-2 md:p-3 rounded-full;
   }
 }
 

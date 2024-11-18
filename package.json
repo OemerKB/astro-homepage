@@ -27,6 +27,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@astrojs/react": "^3.6.2",
     "@astrojs/rss": "^4.0.8",
     "@astrojs/sitemap": "^3.2.0",
     "@astrolib/analytics": "^0.6.1",
@@ -35,6 +36,7 @@
     "astro": "^4.16.2",
     "astro-embed": "^0.7.4",
     "astro-icon": "^1.1.1",
+    "framer-motion": "^11.11.17",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
     "unpic": "^3.18.0"

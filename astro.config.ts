@@ -10,6 +10,7 @@ import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
+import react from '@astrojs/react';
 
 import astrowind from './vendor/integration';
 
@@ -48,6 +49,8 @@ export default defineConfig({
         ],
       },
     }),
+
+    react(),
 
     ...whenExternalScripts(() =>
       partytown({

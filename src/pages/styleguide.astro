@@ -1,0 +1,285 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Button from '~/components/ui/Button.astro';
+import Headline from '~/components/ui/Headline.astro';
+import ItemGrid from '~/components/ui/ItemGrid.astro';
+import Form from '~/components/ui/Form.astro';
+import Timeline from '~/components/ui/Timeline.astro';
+
+// Widget Imports
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Brands from '~/components/widgets/Brands.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Contact from '~/components/widgets/Contact.astro';
+import { Icon } from 'astro-icon/components';
+
+const metadata = {
+  title: 'Styleguide - Widgets',
+  description: 'A comprehensive guide to AstroWind components, widgets, typography, and design elements.',
+};
+
+// Example data for widgets
+const stats = [
+  { title: '15K+', description: 'Downloads' },
+  { title: '20+', description: 'Components' },
+  { title: '95%', description: 'Satisfaction' },
+];
+
+const features = [
+  {
+    title: 'Feature 1',
+    description: 'Description of feature 1',
+    icon: 'tabler:brand-tailwind',
+    image: null
+  },
+  {
+    title: 'Feature 2',
+    description: 'Description of feature 2',
+    icon: 'tabler:components',
+    image: null
+  },
+];
+
+const steps = [
+  {
+    title: 'Step 1',
+    description: 'Description of step 1',
+    icon: 'tabler:package',
+    image: null
+  },
+  {
+    title: 'Step 2',
+    description: 'Description of step 2',
+    icon: 'tabler:letter-case',
+    image: null
+  },
+];
+
+const testimonials = [
+  {
+    testimonial: 'This is an amazing product!',
+    name: 'John Doe',
+    job: 'Developer',
+    image: null
+  },
+  {
+    testimonial: 'Highly recommended!',
+    name: 'Jane Smith',
+    job: 'Designer',
+    image: null
+  },
+];
+
+const faqs = [
+  {
+    title: 'What is AstroWind?',
+    description: 'AstroWind is a free and open-source template for Astro with Tailwind CSS.',
+  },
+  {
+    title: 'How do I get started?',
+    description: 'You can get started by cloning the repository and following the installation instructions.',
+  },
+];
+
+const brands = [
+  {
+    icon: 'tabler:brand-github',
+    title: 'GitHub'
+  },
+  {
+    icon: 'tabler:brand-twitter',
+    title: 'Twitter'
+  },
+];
+
+---
+
+<Layout metadata={metadata}>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl">
+    <div class="mb-10">
+      <Note>This styleguide showcases all available widgets and components.</Note>
+    </div>
+
+    <h1 class="text-4xl font-bold mb-10">Styleguide - Widgets</h1>
+
+    <!-- Navigation for sections -->
+    <div class="mb-16 p-4 bg-gray-50 rounded-lg">
+      <h2 class="text-xl font-semibold mb-4">Quick Navigation</h2>
+      <nav class="flex flex-wrap gap-2">
+        <a href="#hero-sections" class="px-3 py-1 bg-white rounded-full text-sm hover:bg-primary hover:text-white">Hero Sections</a>
+        <a href="#features" class="px-3 py-1 bg-white rounded-full text-sm hover:bg-primary hover:text-white">Features</a>
+        <a href="#content" class="px-3 py-1 bg-white rounded-full text-sm hover:bg-primary hover:text-white">Content</a>
+        <a href="#steps" class="px-3 py-1 bg-white rounded-full text-sm hover:bg-primary hover:text-white">Steps</a>
+        <a href="#testimonials" class="px-3 py-1 bg-white rounded-full text-sm hover:bg-primary hover:text-white">Testimonials</a>
+        <a href="#faqs" class="px-3 py-1 bg-white rounded-full text-sm hover:bg-primary hover:text-white">FAQs</a>
+        <a href="#blog" class="px-3 py-1 bg-white rounded-full text-sm hover:bg-primary hover:text-white">Blog</a>
+        <a href="#cta" class="px-3 py-1 bg-white rounded-full text-sm hover:bg-primary hover:text-white">Call to Action</a>
+      </nav>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">Feature Sections</h2>
+      
+      <div class="space-y-16">
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Features Style 1</h3>
+          <Features
+            title="Features"
+            subtitle="What you get with AstroWind"
+            items={features}
+            columns={2}
+          />
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Features Style 2</h3>
+          <Features2
+            title="Features 2"
+            subtitle="Alternative feature section"
+            items={features}
+          />
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Features Style 3</h3>
+          <Features3
+            title="Features 3"
+            subtitle="Another feature variation"
+            items={features}
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Steps Section -->
+    <div id="steps" class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">Step Sections</h2>
+      
+      <div class="space-y-16">
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Steps Style 1</h3>
+          <Steps
+            title="Steps"
+            items={steps}
+          />
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Steps Style 2</h3>
+          <Steps2
+            title="Steps 2"
+            subtitle="Alternative step section"
+            items={steps}
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div id="testimonials" class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">Testimonials</h2>
+      <Testimonials
+        title="What our customers say"
+        testimonials={testimonials}
+      />
+    </div>
+
+    <!-- FAQs Section -->
+    <div id="faqs" class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">FAQs</h2>
+      <FAQs
+        title="Frequently Asked Questions"
+        subtitle="Find answers to common questions"
+        items={faqs}
+      />
+    </div>
+
+    <!-- Blog Sections -->
+    <div id="blog" class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">Blog Sections</h2>
+      
+      <div class="space-y-16">
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Blog Section Example</h3>
+          <div class="bg-gray-100 rounded-lg p-8">
+            <h4 class="text-2xl font-bold mb-4">Latest Blog Posts</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                  <div class="aspect-video bg-gray-200"></div>
+                  <div class="p-6">
+                    <div class="text-sm text-gray-500 mb-2">Category • 5 min read</div>
+                    <h5 class="text-xl font-semibold mb-2">Example Blog Post {i}</h5>
+                    <p class="text-gray-600 mb-4">This is a placeholder for a blog post excerpt. The actual blog component will display real posts from your content.</p>
+                    <Button variant="primary" size="sm">Read More</Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div id="stats" class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">Stats</h2>
+      <Stats
+        items={stats}
+      />
+    </div>
+
+    <!-- Brands Section -->
+    <div id="brands" class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">Brands</h2>
+      <div class="flex flex-wrap justify-center gap-8">
+        {brands.map(({ icon, title }) => (
+          <div class="flex flex-col items-center">
+            <Icon name={icon} class="w-12 h-12" />
+            <span class="mt-2 text-sm">{title}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">Contact</h2>
+      <Contact
+        title="Get in Touch"
+        subtitle="We're here to help"
+      />
+    </div>
+
+    <!-- Call to Action Section -->
+    <div id="cta" class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">Call to Action</h2>
+      <CallToAction
+        title="Ready to get started?"
+        subtitle="Join us now and experience the difference"
+        actions={[
+          {
+            variant: 'primary',
+            text: 'Get Started',
+            href: '#',
+          },
+          {
+            text: 'Learn more',
+            href: '#',
+          },
+        ]}
+      />
+    </div>
+
+  </section>
+</Layout>

@@ -1,0 +1,50 @@
+name: Pull Request
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run linting and type checking
+        run: |
+          npm run check:eslint
+          npm run check:prettier
+          npm run check:astro
+          
+      - name: Build
+        run: npm run build
+        
+      - name: Run tests
+        run: |
+          npm run test
+          npx playwright install --with-deps
+          npm run test:e2e
+          
+      - name: Comment PR
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const { owner, repo, number } = context.issue;
+            const workflow_url = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`;
+            
+            github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: number,
+              body: `🚀 PR Build Status: ${context.workflow} completed!\n\nSee details: ${workflow_url}`
+            });

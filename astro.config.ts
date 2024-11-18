@@ -22,6 +22,8 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
+  site: 'https://oemerdigital.github.io',
+  base: '/astro-homepage',
   output: 'static',
 
   integrations: [
@@ -81,6 +83,10 @@ export default defineConfig({
   },
 
   vite: {
+    define: {
+      'process.env.PUBLIC_GOOGLE_SITE_ID': JSON.stringify(process.env.PUBLIC_GOOGLE_SITE_ID),
+      'process.env.PUBLIC_GOOGLE_TAGS': JSON.stringify(process.env.PUBLIC_GOOGLE_TAGS),
+    },
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),

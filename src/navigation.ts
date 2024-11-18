@@ -130,6 +130,7 @@ export const footerData = {
         { text: 'Customer stories', href: '#' },
         { text: 'Pricing', href: '#' },
         { text: 'Resources', href: '#' },
+        { text: 'Styleguide', href: getPermalink('/styleguide') },
       ],
     },
     {

@@ -21,13 +21,23 @@
   
   /* Grid Background */
   .bg-grid {
+    position: relative;
+  }
+  
+  .bg-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-size: 50px 50px;
     background-image: 
-      linear-gradient(to right, rgb(229 231 235 / 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(229 231 235 / 0.1) 1px, transparent 1px);
+      linear-gradient(to right, rgb(203 213 225 / 0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(203 213 225 / 0.3) 1px, transparent 1px);
+    background-position: center;
+    pointer-events: none;
+    z-index: -1;
   }
 
-  .dark .bg-grid {
+  .dark .bg-grid::before {
     background-image: 
       linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
@@ -37,20 +47,47 @@
 @layer components {
   /* Gradient Orbs */
   .gradient-orb {
-    @apply absolute rounded-full opacity-70 mix-blend-multiply dark:mix-blend-soft-light dark:opacity-30;
-    filter: blur(100px);
+    @apply absolute rounded-full;
+    opacity: 0.8;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    filter: blur(80px);
+    z-index: 1;
+  }
+
+  .dark .gradient-orb {
+    mix-blend-mode: screen;
+    opacity: 0.15;
   }
 
   .gradient-orb-purple {
-    @apply bg-purple-500/30 dark:bg-purple-400/30;
+    @apply bg-purple-600;
+    opacity: 0.6;
   }
 
   .gradient-orb-red {
-    @apply bg-red-500/20 dark:bg-red-400/20;
+    @apply bg-red-600;
+    opacity: 0.5;
   }
 
   .gradient-orb-blue {
-    @apply bg-blue-500/30 dark:bg-blue-400/30;
+    @apply bg-blue-600;
+    opacity: 0.6;
+  }
+
+  .dark .gradient-orb-purple {
+    @apply bg-purple-300;
+    opacity: 0.15;
+  }
+
+  .dark .gradient-orb-red {
+    @apply bg-red-300;
+    opacity: 0.12;
+  }
+
+  .dark .gradient-orb-blue {
+    @apply bg-blue-300;
+    opacity: 0.15;
   }
 
   /* Buttons */

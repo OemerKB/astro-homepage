@@ -2,35 +2,61 @@
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
 import Headline from '~/components/ui/Headline.astro';
-import type { Features as Props } from '~/types';
+import GradientOrbs from '~/components/ui/GradientOrbs';
+
+import type { Features } from '~/types';
+
+export interface Props {
+  id?: string;
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  items?: Array<Features>;
+  columns?: number;
+  defaultIcon?: string;
+  classes?: Record<string, string>;
+  isDark?: boolean;
+}
 
 const {
+  id,
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline = await Astro.slots.render('tagline'),
   items = [],
   columns = 2,
-
   defaultIcon,
-
-  id,
-  isDark = false,
   classes = {},
-  bg = await Astro.slots.render('bg'),
+  isDark = false,
 } = Astro.props;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-5xl ${classes?.container ?? ''}`} bg={bg}>
-  <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
-  <ItemGrid
-    items={items}
-    columns={columns}
-    defaultIcon={defaultIcon}
-    classes={{
-      container: '',
-      title: 'md:text-[1.3rem]',
-      icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
-      ...((classes?.items as Record<string, never>) ?? {}),
-    }}
-  />
-</WidgetWrapper>
+<section class="relative" {...id ? { id } : {}}>
+  <div class="absolute inset-0 z-0">
+    <GradientOrbs client:load scale={1.2} speed={0.8} variant="blue" />
+  </div>
+  
+  <WidgetWrapper
+    id={id}
+    isDark={isDark}
+    containerClass={`relative max-w-5xl ${classes?.container ?? ''}`}
+  >
+    <Headline
+      title={title}
+      subtitle={subtitle}
+      tagline={tagline}
+      classes={classes?.headline}
+    />
+    <ItemGrid
+      items={items}
+      columns={columns}
+      defaultIcon={defaultIcon}
+      classes={{
+        container: '',
+        title: 'md:text-[1.3rem]',
+        icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
+        ...((classes?.items as Record<string, string>) ?? {}),
+      }}
+    />
+  </WidgetWrapper>
+</section>
